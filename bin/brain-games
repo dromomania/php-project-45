@@ -1,2 +1,10 @@
 #!/usr/bin/env php
-<?php print_r("Welcome to the Brain Games!"); ?>
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use function BrainGames\Cli\greetingUser;
+ 
+print_r("Welcome to the Brain games!\n");
+greetingUser();
+ ?>

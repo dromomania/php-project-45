@@ -2,9 +2,15 @@
     "name": "hexlet/code",
     "description": "first hexlet project",
     "license": "MIT",
-    "require": {},
+    "require": {
+        "wp-cli/php-cli-tools": "^0.12.7"
+    },
     "bin": [
       "bin/brain-games"
-    ]
+    ],
+    "autoload": {
+	"files": [
+            "src/Cli.php"
+        ]
+    }
 }
-
