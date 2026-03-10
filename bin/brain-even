@@ -1,4 +1,47 @@
 #!/usr/bin/env php
 <?php
-echo 234;
+
+namespace BrainEven;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use function cli\prompt;
+use function BrainGames\Cli\greetingUser;
+
+function isEven($randomNumber) {
+	return (($randomNumber % 2) === 0);
+}
+
+function getExpectedAnswer($randomNumber) {
+	if (isEven($randomNumber)) {
+		return "yes";
+	} else {
+		return "no";
+	}
+}
+
+$name = greetingUser();
+echo 'Answer "yes" if the number is even, otherwise answer "no".' . "\n";
+
+$counterCorrectAnswers = 0;
+while ($counterCorrectAnswers < 3) {
+	$randomNumber = rand();
+	echo "Question: $randomNumber" . "\n";
+	$answer = prompt("Your answer");
+	$expected = getExpectedAnswer($randomNumber);
+	if ($expected === $answer) {
+		echo "Correct!" . "\n";
+		$counterCorrectAnswers++;		
+	} else {
+		echo "'$answer' is wrong answer ;(. Correct answer was '$expected'." . "\n";
+		break;
+	}
+}
+
+if ($counterCorrectAnswers === 3) {
+	echo "Congratulations, $name!" . "\n";
+} else {
+	echo "Let's try again, $name!" . "\n";
+}
+
  ?>
