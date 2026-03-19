@@ -15,3 +15,4 @@
 
 ### Asciinema
 [![asciicast](https://asciinema.org/a/YtuzR1m9iDX350Kk.svg)](https://asciinema.org/a/YtuzR1m9iDX350Kk)
+[![asciicast](https://asciinema.org/a/42KLvFkgFD1EAcUj.svg)](https://asciinema.org/a/42KLvFkgFD1EAcUj)
