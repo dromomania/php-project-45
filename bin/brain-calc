@@ -1,0 +1,57 @@
+#!/usr/bin/env php
+<?php
+
+namespace BrainCalc;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use function cli\prompt;
+use function BrainGames\Cli\greetingUser;
+use function BrainGames\Engine\isCorrectAnswer;
+use function BrainGames\Engine\endGame;
+
+
+function getExpectedAnswer($a, $b, $operation) {
+        $result = $operation($a, $b);
+	return $result;
+}
+
+function multiply($a, $b) {
+	$result = $a * $b;
+	return $result;	
+}
+
+function summarise($a, $b) {
+	$result = $a + $b;
+	return $result;
+}
+
+function subtract($a, $b) {
+	$result = $a - $b;
+	return $result;
+}
+
+$name = greetingUser();
+echo 'What is the result of the expression?' . "\n";
+
+$operations = ["*" => multiply(...), "+" => summarise(...), "-" => subtract(...)];
+
+$counterCorrectAnswers = 0;
+while ($counterCorrectAnswers < 3) {
+        $firstNum = rand(1, 100);
+	$secondNum = rand(1, 100);
+	$randomOperationKey = array_rand($operations);
+	$operation = $operations[$randomOperationKey];	
+        echo "Question: $firstNum $randomOperationKey $secondNum" . "\n";
+        $answer = (int)prompt("Your answer");
+        $expected = getExpectedAnswer($firstNum, $secondNum, $operation);
+        if (isCorrectAnswer($expected, $answer)) {
+		$counterCorrectAnswers++;
+	} else {
+		break;
+	}
+}
+
+endGame($counterCorrectAnswers, $name);
+
+?>
