@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+namespace BrainGCD;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use function cli\prompt;
+use function BrainGames\Cli\greetingUser;
+use function BrainGames\Engine\isCorrectAnswer;
+use function BrainGames\Engine\endGame;
+
+
+
+
+?>
