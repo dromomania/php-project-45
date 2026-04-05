@@ -5,13 +5,14 @@ namespace BrainPrime;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use function cli\prompt;
+use function cli\out;
 use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
 
 $name = greetingUser();
-echo 'Answer "yes" if given number is prime. Otherwise answer "no".' . "\n";
+echo out("Answer \"yes\" if given number is prime. Otherwise answer \"no\".\n");
 
 
 function getExpectedAnswer($number) {
@@ -43,7 +44,7 @@ function isPrime($number)
 $counterCorrectAnswers = 0;
 while ($counterCorrectAnswers < 3) {
         $number = rand(0, 100);
-        echo "Question: $number" . "\n";
+        echo out("Question: $number \n");
         $answer = prompt("Your answer");
 	$expected = getExpectedAnswer($number);
          if (isCorrectAnswer($expected, $answer)) {

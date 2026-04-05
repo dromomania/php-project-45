@@ -5,6 +5,7 @@ namespace BrainProgression;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use function cli\prompt;
+use function cli\out;
 use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
@@ -24,7 +25,7 @@ function hideElementOfProgression ($progression, $index) {
 }
 
 $name = greetingUser();
-echo 'What number is missing in the progression?' . "\n";
+echo out("What number is missing in the progression?\n");
 
 $counterCorrectAnswers = 0;
 while ($counterCorrectAnswers < 3) {
@@ -35,7 +36,7 @@ while ($counterCorrectAnswers < 3) {
 	$progression = getProgression($start, $step, $count);
 	$hiddenElement = $progression[$index];
 	$formattedProgression = hideElementOfProgression($progression, $index); 
-        echo "Question: $formattedProgression" . "\n";
+        echo out("Question: $formattedProgression \n");
         $answer = (int)prompt("Your answer");
         $expected = $hiddenElement;
          if (isCorrectAnswer($expected, $answer)) {

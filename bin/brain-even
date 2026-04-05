@@ -6,6 +6,7 @@ namespace BrainEven;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use function cli\prompt;
+use function cli\out;
 use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
@@ -24,12 +25,12 @@ function getExpectedAnswer($randomNumber) {
 }
 
 $name = greetingUser();
-echo 'Answer "yes" if the number is even, otherwise answer "no".' . "\n";
+echo out("Answer \"yes\" if the number is even, otherwise answer \"no\". \n");
 
 $counterCorrectAnswers = 0;
 while ($counterCorrectAnswers < 3) {
 	$randomNumber = rand();
-	echo "Question: $randomNumber" . "\n";
+	echo out("Question: $randomNumber \n");	
 	$answer = prompt("Your answer");
 	$expected = getExpectedAnswer($randomNumber);
 	if (isCorrectAnswer($expected, $answer)) {

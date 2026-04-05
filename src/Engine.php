@@ -1,21 +1,23 @@
 <?php
 namespace BrainGames\Engine;
 
+use function cli\out;
+
 function isCorrectAnswer($expected, $answer) {
         if ($expected === $answer) {
-                echo "Correct!" . "\n";
+                echo out("Correct! \n");
                 return true;
         } else {
-                echo "'$answer' is wrong answer ;(. Correct answer was '$expected'." . "\n";
+                echo out("'$answer' is wrong answer ;(. Correct answer was '$expected'. \n");
                 return false;
         }
 }
 
 function endGame($counterCorrectAnswers, $name) {
         if ($counterCorrectAnswers === 3) {
-                echo "Congratulations, $name!" . "\n";
+                echo out("Congratulations, $name!\n");
         } else {
-                echo "Let's try again, $name!" . "\n";
+                echo out("Let's try again, $name!\n");
         }
 }
 

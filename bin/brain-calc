@@ -6,6 +6,7 @@ namespace BrainCalc;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use function cli\prompt;
+use function cli\out;
 use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
@@ -32,7 +33,7 @@ function subtract($a, $b) {
 }
 
 $name = greetingUser();
-echo 'What is the result of the expression?' . "\n";
+echo out("What is the result of the expression? \n");
 
 $operations = ["*" => multiply(...), "+" => summarise(...), "-" => subtract(...)];
 
@@ -42,7 +43,7 @@ while ($counterCorrectAnswers < 3) {
 	$secondNum = rand(1, 100);
 	$randomOperationKey = array_rand($operations);
 	$operation = $operations[$randomOperationKey];	
-        echo "Question: $firstNum $randomOperationKey $secondNum" . "\n";
+        echo out("Question: $firstNum $randomOperationKey $secondNum \n");
         $answer = (int)prompt("Your answer");
         $expected = getExpectedAnswer($firstNum, $secondNum, $operation);
         if (isCorrectAnswer($expected, $answer)) {
