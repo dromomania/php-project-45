@@ -13,8 +13,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/dromomania/php-project-45/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/dromomania/php-project-45/actions)
 
-ИГРЫ РАЗУМА
-Описание
 «Игры разума» — набор из пяти консольных игр, построенных по принципу популярных мобильных приложений для прокачки мозг>
 Калькулятор. Арифметические выражения, которые необходимо вычислить.
 Прогрессия. Поиск пропущенных чисел в последовательности чисел.
