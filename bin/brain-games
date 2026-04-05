@@ -5,6 +5,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use function BrainGames\Cli\greetingUser;
  
-print_r("Welcome to the Brain games!\n");
+print_r("Welcome to the Brain Games!\n");
 
  ?>
