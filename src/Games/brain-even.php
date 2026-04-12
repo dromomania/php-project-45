@@ -1,9 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-namespace BrainEven;
-
-require_once __DIR__ . '/../../vendor/autoload.php';
+namespace Games\BrainEven;
 
 use function cli\prompt;
 use function cli\out;
@@ -11,6 +9,8 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
+function run()
+{
 
 function isEven($randomNumber) {
 	return (($randomNumber % 2) === 0);
@@ -43,4 +43,5 @@ while ($counterCorrectAnswers < 3) {
 
 endGame($counterCorrectAnswers, $name);
 
+}
  ?>

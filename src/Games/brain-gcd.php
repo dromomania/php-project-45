@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-namespace BrainGCD;
+namespace Games\BrainGCD;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -9,6 +9,9 @@ use function cli\out;
 use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
+
+function run() 
+{
 
 function getGcd($firstNum, $secondNum) {
 	while ($firstNum !== $secondNum) {
@@ -39,5 +42,6 @@ while ($counterCorrectAnswers < 3) {
 }
 
 endGame($counterCorrectAnswers, $name);
+}
 
 ?>

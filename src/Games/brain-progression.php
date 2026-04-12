@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-namespace BrainProgression;
+namespace Games\BrainProgression;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -9,6 +9,9 @@ use function cli\out;
 use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
+
+function run()
+{
 
 function getProgression($start, $step, $count) {
 	$progression = [];
@@ -47,4 +50,5 @@ while ($counterCorrectAnswers < 3) {
 }
 
 endGame($counterCorrectAnswers, $name);
+}
 ?>

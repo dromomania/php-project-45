@@ -4,15 +4,15 @@ install:
 brain-games:
 	./bin/brain-games
 brain-even:
-	./src/Games/brain-even
+	./bin/brain-even
 brain-calc:
-	./src/Games/brain-calc
+	./bin/brain-calc
 brain-gcd:
-	./src/Games/brain-gcd
+	./bin/brain-gcd
 brain-progression:
-	./src/Games/brain-progression
+	./bin/brain-progression
 brain-prime:
-	./src/Games/brain-prime
+	./bin/brain-prime
 validate:
 	composer validate
 lint:

@@ -1,16 +1,13 @@
 #!/usr/bin/env php
 <?php
 
-namespace BrainCalc;
-
-require_once __DIR__ . '/../../vendor/autoload.php';
+namespace Games\BrainCalc;
 
 use function cli\prompt;
 use function cli\out;
 use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
-
 
 function getExpectedAnswer($a, $b, $operation) {
         $result = $operation($a, $b);
@@ -32,10 +29,11 @@ function subtract($a, $b) {
 	return $result;
 }
 
-$name = greetingUser();
-echo out("What is the result of the expression? \n");
+function run() {
+	$name = greetingUser();
+	echo out("What is the result of the expression? \n");
 
-$operations = ["*" => multiply(...), "+" => summarise(...), "-" => subtract(...)];
+	$operations = ["*" => multiply(...), "+" => summarise(...), "-" => subtract(...)];
 
 $counterCorrectAnswers = 0;
 while ($counterCorrectAnswers < 3) {
@@ -54,5 +52,7 @@ while ($counterCorrectAnswers < 3) {
 }
 
 endGame($counterCorrectAnswers, $name);
+
+}
 
 ?>

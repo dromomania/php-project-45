@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-namespace BrainPrime;
+namespace Games\BrainPrime;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -10,6 +10,8 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
+function run()
+{
 
 $name = greetingUser();
 echo out("Answer \"yes\" if given number is prime. Otherwise answer \"no\".\n");
@@ -55,4 +57,5 @@ while ($counterCorrectAnswers < 3) {
 }  
 
 endGame($counterCorrectAnswers, $name);
+}
 ?>
