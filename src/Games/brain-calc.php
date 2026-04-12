@@ -9,13 +9,13 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
-function getExpectedAnswer(int $a, int $b, string $operation): int
+function getExpectedAnswer(int $a, int $b, callable $operation): int
 {
-        $result = $operation($a, $b);
+    $result = $operation($a, $b);
     return $result;
 }
 
-function multiply(int $a, int  $b): int
+function multiply(int $a, int $b): int
 {
     $result = $a * $b;
     return $result;
