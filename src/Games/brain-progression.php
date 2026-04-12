@@ -9,7 +9,7 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
-function getProgression($start, $step, $count)
+function getProgression(int $start, int $step, int $count): array
 {
     $progression = [];
     for ($i = 0; $i < $count; $i++) {
@@ -18,14 +18,14 @@ function getProgression($start, $step, $count)
     return $progression;
 }
 
-function hideElementOfProgression($progression, $index)
+function hideElementOfProgression(array $progression, int $index): string
 {
     $progression[$index] = '..';
     $formattedProgression = implode(' ', $progression);
     return $formattedProgression;
 }
 
-function run()
+function run(): void
 {
     $name = greetingUser();
     echo out("What number is missing in the progression?\n");

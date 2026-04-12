@@ -9,12 +9,12 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
-function isEven($randomNumber)
+function isEven(int $randomNumber): bool
 {
     return (($randomNumber % 2) === 0);
 }
 
-function getExpectedAnswer($randomNumber)
+function getExpectedAnswer(int $randomNumber): string
 {
     if (isEven($randomNumber)) {
         return "yes";
@@ -23,7 +23,7 @@ function getExpectedAnswer($randomNumber)
     }
 }
 
-function run()
+function run(): void
 {
     $name = greetingUser();
     echo out("Answer \"yes\" if the number is even, otherwise answer \"no\". \n");

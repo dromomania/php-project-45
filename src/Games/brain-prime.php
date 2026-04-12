@@ -9,7 +9,7 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
-function getExpectedAnswer($number)
+function getExpectedAnswer(int $number): string
 {
     if (isPrime($number)) {
         return 'yes';
@@ -18,7 +18,7 @@ function getExpectedAnswer($number)
     }
 }
 
-function isPrime($number)
+function isPrime(int $number): bool
 {
     if ($number <= 1) {
         return false;
@@ -40,7 +40,7 @@ function isPrime($number)
     return true;
 }
 
-function run()
+function run(): void
 {
     $name = greetingUser();
     echo out("Answer \"yes\" if given number is prime. Otherwise answer \"no\".\n");

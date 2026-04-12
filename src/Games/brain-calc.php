@@ -9,31 +9,31 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
-function getExpectedAnswer($a, $b, $operation)
+function getExpectedAnswer(int $a, int $b, string $operation): int
 {
         $result = $operation($a, $b);
     return $result;
 }
 
-function multiply($a, $b)
+function multiply(int $a, int  $b): int
 {
     $result = $a * $b;
     return $result;
 }
 
-function summarise($a, $b)
+function summarise(int $a, int $b): int
 {
     $result = $a + $b;
     return $result;
 }
 
-function subtract($a, $b)
+function subtract(int $a, int $b): int
 {
     $result = $a - $b;
     return $result;
 }
 
-function run()
+function run(): void
 {
     $name = greetingUser();
     echo out("What is the result of the expression? \n");

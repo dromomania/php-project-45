@@ -9,7 +9,7 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
-function getGcd($firstNum, $secondNum)
+function getGcd(int $firstNum, int $secondNum): int
 {
     while ($firstNum !== $secondNum) {
         if ($firstNum > $secondNum) {
@@ -21,7 +21,7 @@ function getGcd($firstNum, $secondNum)
     return $firstNum;
 }
 
-function run()
+function run(): void
 {
     $name = greetingUser();
     echo out("Find the greatest common divisor of given numbers. \n");
