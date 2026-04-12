@@ -3,14 +3,11 @@
 
 namespace Games\BrainProgression;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 use function cli\prompt;
 use function cli\out;
 use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
-
 
 function getProgression($start, $step, $count)
 {

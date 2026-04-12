@@ -3,8 +3,6 @@
 
 namespace Games\BrainGCD;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 use function cli\prompt;
 use function cli\out;
 use function BrainGames\Cli\greetingUser;
