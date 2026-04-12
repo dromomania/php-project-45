@@ -26,12 +26,12 @@ function getExpectedAnswer(int $randomNumber): string
 function run(): void
 {
     $name = greetingUser();
-    echo out("Answer \"yes\" if the number is even, otherwise answer \"no\". \n");
+    out("Answer \"yes\" if the number is even, otherwise answer \"no\". \n");
 
     $counterCorrectAnswers = 0;
     while ($counterCorrectAnswers < 3) {
         $randomNumber = rand();
-        echo out("Question: $randomNumber \n");
+        out("Question: $randomNumber \n");
         $answer = prompt("Your answer");
         $expected = getExpectedAnswer($randomNumber);
         if (isCorrectAnswer($expected, $answer)) {

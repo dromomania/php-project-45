@@ -28,7 +28,7 @@ function hideElementOfProgression(array $progression, int $index): string
 function run(): void
 {
     $name = greetingUser();
-    echo out("What number is missing in the progression?\n");
+    out("What number is missing in the progression?\n");
 
     $counterCorrectAnswers = 0;
     while ($counterCorrectAnswers < 3) {
@@ -39,7 +39,7 @@ function run(): void
         $progression = getProgression($start, $step, $count);
         $hiddenElement = $progression[$index];
         $formattedProgression = hideElementOfProgression($progression, $index);
-        echo out("Question: $formattedProgression \n");
+        out("Question: $formattedProgression \n");
         $answer = (int)prompt("Your answer");
         $expected = $hiddenElement;
         if (isCorrectAnswer($expected, $answer)) {

@@ -36,7 +36,7 @@ function subtract(int $a, int $b): int
 function run(): void
 {
     $name = greetingUser();
-    echo out("What is the result of the expression? \n");
+    out("What is the result of the expression? \n");
 
     $operations = ["*" => multiply(...), "+" => summarise(...), "-" => subtract(...)];
 
@@ -46,7 +46,7 @@ function run(): void
         $secondNum = rand(1, 100);
         $randomOperationKey = array_rand($operations);
         $operation = $operations[$randomOperationKey];
-        echo out("Question: $firstNum $randomOperationKey $secondNum \n");
+        out("Question: $firstNum $randomOperationKey $secondNum \n");
         $answer = (int)prompt("Your answer");
         $expected = getExpectedAnswer($firstNum, $secondNum, $operation);
         if (isCorrectAnswer($expected, $answer)) {

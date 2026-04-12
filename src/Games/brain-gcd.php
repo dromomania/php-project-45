@@ -24,13 +24,13 @@ function getGcd(int $firstNum, int $secondNum): int
 function run(): void
 {
     $name = greetingUser();
-    echo out("Find the greatest common divisor of given numbers. \n");
+    out("Find the greatest common divisor of given numbers. \n");
 
     $counterCorrectAnswers = 0;
     while ($counterCorrectAnswers < 3) {
             $firstNum = rand(1, 100);
             $secondNum = rand(1, 100);
-            echo out("Question: $firstNum $secondNum \n");
+            out("Question: $firstNum $secondNum \n");
             $answer = (int)prompt("Your answer");
         $expected = getGcd($firstNum, $secondNum);
         if (isCorrectAnswer($expected, $answer)) {
