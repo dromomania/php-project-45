@@ -9,50 +9,54 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
-function getExpectedAnswer($a, $b, $operation) {
+function getExpectedAnswer($a, $b, $operation)
+{
         $result = $operation($a, $b);
-	return $result;
+    return $result;
 }
 
-function multiply($a, $b) {
-	$result = $a * $b;
-	return $result;	
+function multiply($a, $b)
+{
+    $result = $a * $b;
+    return $result;
 }
 
-function summarise($a, $b) {
-	$result = $a + $b;
-	return $result;
+function summarise($a, $b)
+{
+    $result = $a + $b;
+    return $result;
 }
 
-function subtract($a, $b) {
-	$result = $a - $b;
-	return $result;
+function subtract($a, $b)
+{
+    $result = $a - $b;
+    return $result;
 }
 
-function run() {
-	$name = greetingUser();
-	echo out("What is the result of the expression? \n");
+function run()
+{
+    $name = greetingUser();
+    echo out("What is the result of the expression? \n");
 
-	$operations = ["*" => multiply(...), "+" => summarise(...), "-" => subtract(...)];
+    $operations = ["*" => multiply(...), "+" => summarise(...), "-" => subtract(...)];
 
-$counterCorrectAnswers = 0;
-while ($counterCorrectAnswers < 3) {
+    $counterCorrectAnswers = 0;
+    while ($counterCorrectAnswers < 3) {
         $firstNum = rand(1, 100);
-	$secondNum = rand(1, 100);
-	$randomOperationKey = array_rand($operations);
-	$operation = $operations[$randomOperationKey];	
+        $secondNum = rand(1, 100);
+        $randomOperationKey = array_rand($operations);
+        $operation = $operations[$randomOperationKey];
         echo out("Question: $firstNum $randomOperationKey $secondNum \n");
         $answer = (int)prompt("Your answer");
         $expected = getExpectedAnswer($firstNum, $secondNum, $operation);
         if (isCorrectAnswer($expected, $answer)) {
-		$counterCorrectAnswers++;
-	} else {
-		break;
-	}
-}
+            $counterCorrectAnswers++;
+        } else {
+            break;
+        }
+    }
 
-endGame($counterCorrectAnswers, $name);
-
+    endGame($counterCorrectAnswers, $name);
 }
 
 ?>

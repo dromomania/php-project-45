@@ -1,5 +1,6 @@
 #!/usr/bin/env php
 <?php
+
 namespace Games\BrainPrime;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -10,52 +11,56 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
-function run()
+function getExpectedAnswer($number)
 {
-
-$name = greetingUser();
-echo out("Answer \"yes\" if given number is prime. Otherwise answer \"no\".\n");
-
-
-function getExpectedAnswer($number) {
-	if (isPrime($number)) {
-		return 'yes';
-	} else {
-		return 'no';
-	}
+    if (isPrime($number)) {
+        return 'yes';
+    } else {
+        return 'no';
+    }
 }
 
 function isPrime($number)
 {
-	if ($number <= 1) 
-		return false;
-        if ($number == 2) 
-                return true;
-	if ($number % 2 == 0)
-		return false;
-	$i=3;
-	$max_factor = (int)sqrt($number);
-	while ($i <= $max_factor) {
-		if ($number % $i == 0)
-			return false;
-		$i += 2;
-	}
-	return true;
+    if ($number <= 1) {
+        return false;
+    }
+    if ($number == 2) {
+            return true;
+    }
+    if ($number % 2 == 0) {
+        return false;
+    }
+    $i = 3;
+    $max_factor = (int)sqrt($number);
+    while ($i <= $max_factor) {
+        if ($number % $i == 0) {
+            return false;
+        }
+        $i += 2;
+    }
+    return true;
 }
-  
-$counterCorrectAnswers = 0;
-while ($counterCorrectAnswers < 3) {
+
+function run()
+{
+    $name = greetingUser();
+    echo out("Answer \"yes\" if given number is prime. Otherwise answer \"no\".\n");
+
+    $counterCorrectAnswers = 0;
+    while ($counterCorrectAnswers < 3) {
         $number = rand(0, 100);
         echo out("Question: $number \n");
         $answer = prompt("Your answer");
-	$expected = getExpectedAnswer($number);
-         if (isCorrectAnswer($expected, $answer)) {
-                $counterCorrectAnswers++;
+        $expected = getExpectedAnswer($number);
+        if (isCorrectAnswer($expected, $answer)) {
+               $counterCorrectAnswers++;
         } else {
-                break;
+            break;
         }
-}  
+    }
 
-endGame($counterCorrectAnswers, $name);
+    endGame($counterCorrectAnswers, $name);
 }
+
 ?>

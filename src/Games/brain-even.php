@@ -9,39 +9,39 @@ use function BrainGames\Cli\greetingUser;
 use function BrainGames\Engine\isCorrectAnswer;
 use function BrainGames\Engine\endGame;
 
+function isEven($randomNumber)
+{
+    return (($randomNumber % 2) === 0);
+}
+
+function getExpectedAnswer($randomNumber)
+{
+    if (isEven($randomNumber)) {
+        return "yes";
+    } else {
+        return "no";
+    }
+}
+
 function run()
 {
+    $name = greetingUser();
+    echo out("Answer \"yes\" if the number is even, otherwise answer \"no\". \n");
 
-function isEven($randomNumber) {
-	return (($randomNumber % 2) === 0);
-}
-
-function getExpectedAnswer($randomNumber) {
-	if (isEven($randomNumber)) {
-		return "yes";
-	} else {
-		return "no";
-	}
-}
-
-$name = greetingUser();
-echo out("Answer \"yes\" if the number is even, otherwise answer \"no\". \n");
-
-$counterCorrectAnswers = 0;
-while ($counterCorrectAnswers < 3) {
-	$randomNumber = rand();
-	echo out("Question: $randomNumber \n");	
-	$answer = prompt("Your answer");
-	$expected = getExpectedAnswer($randomNumber);
-	if (isCorrectAnswer($expected, $answer)) {
+    $counterCorrectAnswers = 0;
+    while ($counterCorrectAnswers < 3) {
+        $randomNumber = rand();
+        echo out("Question: $randomNumber \n");
+        $answer = prompt("Your answer");
+        $expected = getExpectedAnswer($randomNumber);
+        if (isCorrectAnswer($expected, $answer)) {
                 $counterCorrectAnswers++;
         } else {
-                break;
+            break;
         }
+    }
+
+
+    endGame($counterCorrectAnswers, $name);
 }
-
-
-endGame($counterCorrectAnswers, $name);
-
-}
- ?>
+?>
