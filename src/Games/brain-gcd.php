@@ -6,7 +6,7 @@ use function BrainGames\Engine\runGame;
 
 function run(): void
 {
-    runGame(fn() => generateData(), "Find the greatestcommon divisor of given numbers. \n");
+    runGame(fn() => generateData(), "Find the greatest common divisor of given numbers. \n");
 }
 
 
