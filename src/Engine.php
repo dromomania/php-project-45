@@ -5,7 +5,7 @@ namespace BrainGames\Engine;
 use function cli\out;
 use function cli\prompt;
 
-function runGame(callable $dataGenerator, string $gameDescription)
+function runGame(callable $dataGenerator, string $gameDescription): void
 {
     out("Welcome to the Brain Games!\n");
     $name = prompt("May I have your name?");
