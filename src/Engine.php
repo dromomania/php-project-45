@@ -3,8 +3,31 @@
 namespace BrainGames\Engine;
 
 use function cli\out;
+use function cli\prompt;
 
-function isCorrectAnswer(int|string $expected, int|string $answer): bool
+function runGame(callable $dataGenerator, string $gameDescription)
+{
+    out("Welcome to the Brain Games!\n");
+    $name = prompt("May I have your name?");
+    out("Hello, $name!\n");
+
+    out($gameDescription);
+
+    $counterCorrectAnswers = 0;
+    for ($i = 0; $i < 3; $i++) {
+        $roundData = $dataGenerator();
+        out($roundData['question']);
+        $answer = prompt('Your answer');
+        if (isCorrectAnswer($roundData['answer'], $answer)) {
+            $counterCorrectAnswers++;
+        } else {
+            break;
+        }
+    }
+    endGame($counterCorrectAnswers, $name);
+}
+
+function isCorrectAnswer(string $expected, string $answer): bool
 {
     if ($expected === $answer) {
             out("Correct! \n");

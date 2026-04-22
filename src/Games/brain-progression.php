@@ -1,13 +1,31 @@
-#!/usr/bin/env php
 <?php
 
 namespace Games\BrainProgression;
 
-use function cli\prompt;
-use function cli\out;
-use function BrainGames\Cli\greetingUser;
-use function BrainGames\Engine\isCorrectAnswer;
-use function BrainGames\Engine\endGame;
+use function BrainGames\Engine\runGame;
+
+function run(): void
+{
+    runGame(fn() => generateData(), "What number is missing in the progression?\n");
+}
+
+function generateData(): array
+{
+        $start = rand(1, 100);
+        $step = rand(1, 10);
+        $count = rand(5, 10);
+        $index = rand(0, ($count - 1));
+        $progression = getProgression($start, $step, $count);
+        $hiddenElement = $progression[$index];
+        $formattedProgression = hideElementOfProgression($progression, $index);
+        $question = "Question: $formattedProgression \n";
+        $expected = $hiddenElement;
+
+    return [
+            'question' => $question,
+            'answer' => $expected
+        ];
+}
 
 function getProgression(int $start, int $step, int $count): array
 {
@@ -24,31 +42,3 @@ function hideElementOfProgression(array $progression, int $index): string
     $formattedProgression = implode(' ', $progression);
     return $formattedProgression;
 }
-
-function run(): void
-{
-    $name = greetingUser();
-    out("What number is missing in the progression?\n");
-
-    $counterCorrectAnswers = 0;
-    while ($counterCorrectAnswers < 3) {
-        $start = rand(1, 100);
-        $step = rand(1, 10);
-        $count = rand(5, 10);
-        $index = rand(0, ($count - 1));
-        $progression = getProgression($start, $step, $count);
-        $hiddenElement = $progression[$index];
-        $formattedProgression = hideElementOfProgression($progression, $index);
-        out("Question: $formattedProgression \n");
-        $answer = (int)prompt("Your answer");
-        $expected = $hiddenElement;
-        if (isCorrectAnswer($expected, $answer)) {
-               $counterCorrectAnswers++;
-        } else {
-            break;
-        }
-    }
-
-    endGame($counterCorrectAnswers, $name);
-}
-?>

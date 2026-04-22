@@ -1,13 +1,25 @@
-#!/usr/bin/env php
 <?php
 
 namespace Games\BrainPrime;
 
-use function cli\prompt;
-use function cli\out;
-use function BrainGames\Cli\greetingUser;
-use function BrainGames\Engine\isCorrectAnswer;
-use function BrainGames\Engine\endGame;
+use function BrainGames\Engine\runGame;
+
+function run(): void
+{
+    runGame(fn() => generateData(), "Answer \"yes\" if given number is prime. Otherwise answer \"no\".\n");
+}
+
+function generateData(): array
+{
+        $number = rand(0, 100);
+    $question = "Question: $number \n";
+        $expected = getExpectedAnswer($number);
+
+    return [
+            'question' => $question,
+            'answer' => (string)$expected
+    ];
+}
 
 function getExpectedAnswer(int $number): string
 {
@@ -39,26 +51,3 @@ function isPrime(int $number): bool
     }
     return true;
 }
-
-function run(): void
-{
-    $name = greetingUser();
-    out("Answer \"yes\" if given number is prime. Otherwise answer \"no\".\n");
-
-    $counterCorrectAnswers = 0;
-    while ($counterCorrectAnswers < 3) {
-        $number = rand(0, 100);
-        out("Question: $number \n");
-        $answer = prompt("Your answer");
-        $expected = getExpectedAnswer($number);
-        if (isCorrectAnswer($expected, $answer)) {
-               $counterCorrectAnswers++;
-        } else {
-            break;
-        }
-    }
-
-    endGame($counterCorrectAnswers, $name);
-}
-
-?>
