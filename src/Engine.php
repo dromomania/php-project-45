@@ -2,21 +2,21 @@
 
 namespace BrainGames\Engine;
 
-use function cli\out;
+use function cli\line;
 use function cli\prompt;
 
 function runGame(callable $dataGenerator, string $gameDescription): void
 {
-    out("Welcome to the Brain Games!\n");
+    line("Welcome to the Brain Games!");
     $name = prompt("May I have your name?");
-    out("Hello, $name!\n");
+    line("Hello, $name!");
 
-    out($gameDescription);
+    line($gameDescription);
 
     $counterCorrectAnswers = 0;
     for ($i = 0; $i < 3; $i++) {
         $roundData = $dataGenerator();
-        out($roundData['question']);
+        line($roundData['question']);
         $answer = prompt('Your answer');
         if (isCorrectAnswer($roundData['answer'], $answer)) {
             $counterCorrectAnswers++;

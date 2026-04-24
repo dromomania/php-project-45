@@ -10,7 +10,5 @@ if (file_exists($autoloadPath1)) {
 }
 
 use function BrainGames\Cli\greetingUser;
- 
-print_r("Welcome to the Brain Games!\n");
 greetingUser();
- ?>
+

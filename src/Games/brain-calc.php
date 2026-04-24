@@ -11,7 +11,11 @@ function run(): void
 
 function generateData(): array
 {
-    $operations = ["*" => multiply(...), "+" => summarise(...), "-" => subtract(...)];
+        $operations = [
+		"*" => multiply(...), 
+		"+" => summarise(...), 
+		"-" => subtract(...)
+	];
         $firstNum = rand(1, 100);
         $secondNum = rand(1, 100);
 
