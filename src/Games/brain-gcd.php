@@ -4,23 +4,26 @@ namespace BrainGames\Games\BrainGCD;
 
 use function BrainGames\Engine\runGame;
 
+const MIN_NUMBER = 1;
+const MAX_NUMBER = 100;
+const GAME_DESCRIPTION = "Find the greatest common divisor of given numbers.";
+
 function run(): void
 {
-    runGame(fn() => generateData(), "Find the greatest common divisor of given numbers. \n");
+    runGame(fn() => generateData(), GAME_DESCRIPTION);
 }
-
 
 function generateData(): array
 {
-    $firstNum = rand(1, 100);
-        $secondNum = rand(1, 100);
-        $question = "Question: $firstNum $secondNum \n";
-        $expected = getGcd($firstNum, $secondNum);
+    $firstNum = rand(MIN_NUMBER, MAX_NUMBER);
+    $secondNum = rand(MIN_NUMBER, MAX_NUMBER);
+    $question = "Question: $firstNum $secondNum";
+    $expected = getGcd($firstNum, $secondNum);
 
     return [
-            'question' => $question,
-            'answer' => $expected
-        ];
+        'question' => $question,
+        'answer' => $expected
+    ];
 }
 
 function getGcd(int $firstNum, int $secondNum): int

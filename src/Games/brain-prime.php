@@ -4,30 +4,25 @@ namespace BrainGames\Games\BrainPrime;
 
 use function BrainGames\Engine\runGame;
 
+const MIN_NUMBER = 0;
+const MAX_NUMBER = 100;
+const GAME_DESCRIPTION = "Answer \"yes\" if given number is prime. Otherwise answer \"no\".";
+
 function run(): void
 {
-    runGame(fn() => generateData(), "Answer \"yes\" if given number is prime. Otherwise answer \"no\".\n");
+    runGame(fn() => generateData(), GAME_DESCRIPTION);
 }
 
 function generateData(): array
 {
-        $number = rand(0, 100);
-    $question = "Question: $number \n";
-        $expected = getExpectedAnswer($number);
+    $number = rand(MIN_NUMBER, MAX_NUMBER);
+    $question = "Question: $number";
+    $expected = isPrime($number) ? "yes" : "no";
 
     return [
-            'question' => $question,
-            'answer' => $expected
+        'question' => $question,
+        'answer' => $expected
     ];
-}
-
-function getExpectedAnswer(int $number): string
-{
-    if (isPrime($number)) {
-        return 'yes';
-    } else {
-        return 'no';
-    }
 }
 
 function isPrime(int $number): bool
@@ -36,7 +31,7 @@ function isPrime(int $number): bool
         return false;
     }
     if ($number === 2) {
-            return true;
+        return true;
     }
     if ($number % 2 === 0) {
         return false;

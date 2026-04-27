@@ -4,16 +4,18 @@ namespace BrainGames\Games\BrainEven;
 
 use function BrainGames\Engine\runGame;
 
+const GAME_DESCRIPTION = "Answer \"yes\" if the number is even, otherwise answer \"no\".";
+
 function run(): void
 {
-    runGame(fn() => generateData(), "Answer \"yes\" if the number is even, otherwise answer \"no\". \n");
+    runGame(fn() => generateData(), GAME_DESCRIPTION);
 }
 
 function generateData(): array
 {
     $randomNumber = rand();
-    $question = "Question: $randomNumber \n";
-        $expected = getExpectedAnswer($randomNumber);
+    $question = "Question: $randomNumber";
+    $expected = isEven($randomNumber) ? "yes" : "no";
     return [
         'question' => $question,
         'answer' => $expected
@@ -23,13 +25,4 @@ function generateData(): array
 function isEven(int $randomNumber): bool
 {
     return (($randomNumber % 2) === 0);
-}
-
-function getExpectedAnswer(int $randomNumber): string
-{
-    if (isEven($randomNumber)) {
-        return "yes";
-    } else {
-        return "no";
-    }
 }

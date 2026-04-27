@@ -5,6 +5,8 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
+const NUMBER_OF_ITERATIONS = 3;
+
 function runGame(callable $dataGenerator, string $gameDescription): void
 {
     line("Welcome to the Brain Games!");
@@ -14,35 +16,24 @@ function runGame(callable $dataGenerator, string $gameDescription): void
     line($gameDescription);
 
     $counterCorrectAnswers = 0;
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < NUMBER_OF_ITERATIONS; $i++) {
         $roundData = $dataGenerator();
         line($roundData['question']);
         $answer = prompt('Your answer');
-        if (isCorrectAnswer($roundData['answer'], $answer)) {
+        $expected = $roundData['answer'];
+        if ($expected === $answer) {
+            line("Correct!");
             $counterCorrectAnswers++;
         } else {
+            line("'$answer' is wrong answer ;(. Correct answer was '$expected'.");
             break;
         }
     }
-    endGame($counterCorrectAnswers, $name);
-}
 
-function isCorrectAnswer(string $expected, string $answer): bool
-{
-    if ($expected === $answer) {
-            out("Correct! \n");
-            return true;
+    if ($counterCorrectAnswers === NUMBER_OF_ITERATIONS) {
+        line("Congratulations, $name!");
     } else {
-            out("'$answer' is wrong answer ;(. Correct answer was '$expected'. \n");
-            return false;
+        line("Let's try again, $name!");
     }
 }
 
-function endGame(int $counterCorrectAnswers, string $name): void
-{
-    if ($counterCorrectAnswers === 3) {
-            out("Congratulations, $name!\n");
-    } else {
-            out("Let's try again, $name!\n");
-    }
-}
