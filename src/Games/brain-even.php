@@ -24,5 +24,5 @@ function generateData(): array
 
 function isEven(int $randomNumber): bool
 {
-    return (($randomNumber % 2) === 0);
+    return ($randomNumber % 2) === 0;
 }

@@ -27,22 +27,21 @@ function generateData(): array
 
 function isPrime(int $number): bool
 {
-    if ($number <= 1) {
-        return false;
-    }
     if ($number === 2) {
         return true;
     }
-    if ($number % 2 === 0) {
+    if ($number <= 1 || $number % 2 === 0) {
         return false;
     }
+
     $i = 3;
+    $result = true;
     $maxFactor = (int)sqrt($number);
-    while ($i <= $maxFactor) {
+    while ($i <= $maxFactor && $result) {
         if ($number % $i === 0) {
-            return false;
+            $result = false;
         }
         $i += 2;
     }
-    return true;
+    return $result;
 }

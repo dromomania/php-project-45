@@ -47,6 +47,5 @@ function getProgression(int $start, int $step, int $count): array
 function hideElementOfProgression(array $progression, int $index): string
 {
     $progression[$index] = '..';
-    $formattedProgression = implode(' ', $progression);
-    return $formattedProgression;
+    return implode(' ', $progression);
 }
