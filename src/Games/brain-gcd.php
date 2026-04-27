@@ -22,7 +22,7 @@ function generateData(): array
 
     return [
         'question' => $question,
-        'answer' => $expected
+        'answer' => (string)$expected
     ];
 }
 

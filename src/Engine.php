@@ -36,4 +36,3 @@ function runGame(callable $dataGenerator, string $gameDescription): void
         line("Let's try again, $name!");
     }
 }
-

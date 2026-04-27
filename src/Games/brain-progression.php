@@ -31,7 +31,7 @@ function generateData(): array
 
     return [
         'question' => $question,
-        'answer' =>(string)$expected
+        'answer' => (string)$expected
     ];
 }
 
