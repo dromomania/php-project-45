@@ -10,29 +10,27 @@ const MAX_NUMBER = 100;
 
 function run(): void
 {
-    runGame(fn() => generateData(), GAME_DESCRIPTION);
-}
+    runGame(function () {
+            $operations = [
+                "*" => multiply(...),
+                "+" => summarise(...),
+                "-" => subtract(...)
+            ];
 
-function generateData(): array
-{
-    $operations = [
-        "*" => multiply(...),
-        "+" => summarise(...),
-        "-" => subtract(...)
-    ];
+            $firstNum = rand(MIN_NUMBER, MAX_NUMBER);
+            $secondNum = rand(MIN_NUMBER, MAX_NUMBER);
 
-    $firstNum = rand(MIN_NUMBER, MAX_NUMBER);
-    $secondNum = rand(MIN_NUMBER, MAX_NUMBER);
+            $randomOperationKey = array_rand($operations);
+            $operation = $operations[$randomOperationKey];
+            $question = "Question: $firstNum $randomOperationKey $secondNum";
+            $expected = $operation($firstNum, $secondNum);
 
-    $randomOperationKey = array_rand($operations);
-    $operation = $operations[$randomOperationKey];
-    $question = "Question: $firstNum $randomOperationKey $secondNum";
-    $expected = $operation($firstNum, $secondNum);
-
-    return [
-        'question' => $question,
-        'answer' => (string)$expected
-    ];
+            return [
+                'question' => $question,
+                'answer' => (string)$expected
+            ];
+    },
+        GAME_DESCRIPTION);
 }
 
 function multiply(int $a, int $b): int

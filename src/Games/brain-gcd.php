@@ -10,20 +10,18 @@ const GAME_DESCRIPTION = "Find the greatest common divisor of given numbers.";
 
 function run(): void
 {
-    runGame(fn() => generateData(), GAME_DESCRIPTION);
-}
+    runGame(function () {
+            $firstNum = rand(MIN_NUMBER, MAX_NUMBER);
+            $secondNum = rand(MIN_NUMBER, MAX_NUMBER);
+            $question = "Question: $firstNum $secondNum";
+            $expected = getGcd($firstNum, $secondNum);
 
-function generateData(): array
-{
-    $firstNum = rand(MIN_NUMBER, MAX_NUMBER);
-    $secondNum = rand(MIN_NUMBER, MAX_NUMBER);
-    $question = "Question: $firstNum $secondNum";
-    $expected = getGcd($firstNum, $secondNum);
-
-    return [
-        'question' => $question,
-        'answer' => (string)$expected
-    ];
+            return [
+                'question' => $question,
+                'answer' => (string)$expected
+            ];
+    },
+        GAME_DESCRIPTION);
 }
 
 function getGcd(int $firstNum, int $secondNum): int

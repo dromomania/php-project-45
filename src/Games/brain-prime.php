@@ -10,19 +10,17 @@ const GAME_DESCRIPTION = "Answer \"yes\" if given number is prime. Otherwise ans
 
 function run(): void
 {
-    runGame(fn() => generateData(), GAME_DESCRIPTION);
-}
+    runGame(function () {
+            $number = rand(MIN_NUMBER, MAX_NUMBER);
+            $question = "Question: $number";
+            $expected = isPrime($number) ? "yes" : "no";
 
-function generateData(): array
-{
-    $number = rand(MIN_NUMBER, MAX_NUMBER);
-    $question = "Question: $number";
-    $expected = isPrime($number) ? "yes" : "no";
-
-    return [
-        'question' => $question,
-        'answer' => $expected
-    ];
+            return [
+                'question' => $question,
+                'answer' => $expected
+            ];
+    },
+        GAME_DESCRIPTION);
 }
 
 function isPrime(int $number): bool

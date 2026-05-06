@@ -14,25 +14,22 @@ const GAME_DESCRIPTION = "What number is missing in the progression?";
 
 function run(): void
 {
-    runGame(fn() => generateData(), GAME_DESCRIPTION);
-}
+    runGame(function () {
+            $start = rand(MIN_NUMBER, MAX_NUMBER);
+            $step = rand(MIN_STEP_VALUE, MAX_STEP_VALUE);
+            $count = rand(MIN_ITEMS_OF_PROGRESSION, MAX_ITEMS_OF_PROGRESSION);
+            $index = rand(0, ($count - 1));
+            $progression = getProgression($start, $step, $count);
+            $hiddenElement = $progression[$index];
+            $formattedProgression = hideElementOfProgression($progression, $index);
+            $question = "Question: $formattedProgression";
+            $expected = $hiddenElement;
 
-function generateData(): array
-{
-    $start = rand(MIN_NUMBER, MAX_NUMBER);
-    $step = rand(MIN_STEP_VALUE, MAX_STEP_VALUE);
-    $count = rand(MIN_ITEMS_OF_PROGRESSION, MAX_ITEMS_OF_PROGRESSION);
-    $index = rand(0, ($count - 1));
-    $progression = getProgression($start, $step, $count);
-    $hiddenElement = $progression[$index];
-    $formattedProgression = hideElementOfProgression($progression, $index);
-    $question = "Question: $formattedProgression";
-    $expected = $hiddenElement;
-
-    return [
-        'question' => $question,
-        'answer' => (string)$expected
-    ];
+            return [
+                'question' => $question,
+                'answer' => (string)$expected
+            ];
+    }, GAME_DESCRIPTION);
 }
 
 function getProgression(int $start, int $step, int $count): array
